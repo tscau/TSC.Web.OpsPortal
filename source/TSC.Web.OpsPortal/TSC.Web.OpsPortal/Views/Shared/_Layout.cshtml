@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - OpsPortal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/font-awesome.min.css" />
+    @RenderSection("Head", required: false)
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    @await Html.PartialAsync("_EnvironmentBadge")
+    <header>
+        <nav class="navbar navbar-expand navbar-light bg-light bg-white mb-3 border-bottom box-shadow">
+            <a class="navbar-brand" asp-area="" asp-controller="Batch" asp-action="Index">OpsPortal</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="dropDownSchedules" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Schedules</a>
+                        <div class="dropdown-menu" aria-labelledby="dropDownSchedules">
+                            <a class="dropdown-item" asp-controller="Schedule" asp-action="Index">Correspondence Schedules</a>
+                            <a class="dropdown-item" asp-controller="ReportingToolSchedule" asp-action="Index">Reporting Tool Schedules</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-dark" asp-controller="BSU" asp-action="BSUEntry">Bulk Status Update</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" asp-controller="PubFileOverride" asp-action="Index">PubFile Override</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" asp-controller="TemplateManagement" asp-action="Index">On/Off Hold Templates</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" asp-controller="LegacyBatchSubmit" asp-action="Index">Legacy Batch Submit</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="dropDownCSVBatch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CSV Batch</a>
+                        <div class="dropdown-menu" aria-labelledby="dropDownCSVBatch">
+                            <a class="dropdown-item" asp-controller="TriggerCsvBatch" asp-action="Index">Trigger CSV Batch</a>
+                            <a class="dropdown-item" asp-controller="TriggerCsvBatch" asp-action="Schedules">CSV Batch Schedules</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-dark dropdown-toggle" href="#" id="dropDownHangfire" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hangfire</a>
+                        <div class="dropdown-menu" aria-labelledby="dropDownHangfire">
+                            <a class="dropdown-item" href="/HangfireComposition" target="_blank">HangFire Composition Dashboard</a>
+                            <a class="dropdown-item" href="/HangfireDelivery" target="_blank">HangFire Delivery Dashboard</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-dark" asp-controller="Versions" asp-action="Index">Versions</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid pr-5 pl-5">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/popper/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
